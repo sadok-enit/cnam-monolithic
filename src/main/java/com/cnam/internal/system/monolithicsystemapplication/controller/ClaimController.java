@@ -36,5 +36,6 @@ public class ClaimController {
     public ResponseEntity<ClaimStatus> getClaimStatus(@PathVariable(value = "id") Long claimId) {
         return claimService.retrieveClaimStatusById(claimId);
     }
+    //add comment
 
 }
