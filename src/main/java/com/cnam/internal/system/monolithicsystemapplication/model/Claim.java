@@ -1,5 +1,6 @@
 package com.cnam.internal.system.monolithicsystemapplication.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -16,23 +17,22 @@ import lombok.Data;
 @Entity
 @Table(name = "claims")
 public class Claim {
-    //missing attributes will be added later
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "numeroBSReclame")
+    @Column(name = "numero_bs_reclame")
     private String numeroReclamation;
 
     @Column(name = "libelle")
     private String libelle;
 
-//    @Column(name = "mntEngage")
-//    private BigDecimal mntEngage;
+    @Column(name = "mnt_engage")
+    private BigDecimal mntEngage;
 
-//    @Column(name = "mntReclame")
-//    private BigDecimal mntReclame;
+    @Column(name = "mnt_reclame")
+    private BigDecimal mntReclame;
 
     @Column(name = "motif")
     private String motif;
@@ -43,11 +43,11 @@ public class Claim {
     @Column(name = "observation")
     private String observation;
 
-    @Column(name = "bulletin_Code")
+    @Column(name = "bulletin_code")
     private long bulletinCode;
 
-//    @Column(name = "numBordereauReclamation")
-//    private String numBordereauReclamation;
+    @Column(name = "num_bordereau_reclamation")
+    private String numBordereauReclamation;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
