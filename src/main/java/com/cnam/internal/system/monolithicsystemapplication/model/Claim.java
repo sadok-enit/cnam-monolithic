@@ -53,7 +53,7 @@ public class Claim {
     private long bulletinCode;
 
     @Column(name = "num_bordereau_reclamation")
-    private String numBordereauReclamation;
+    private long numBordereauReclamation;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)

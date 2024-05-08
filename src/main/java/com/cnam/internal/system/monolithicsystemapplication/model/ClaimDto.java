@@ -16,7 +16,7 @@ public class ClaimDto {
     private LocalDateTime date;
     private String observation;
     private long bulletinCode;
-    private String numBordereauReclamation;
+    private long numBordereauReclamation;
     private ClaimStatus status = ClaimStatus.PENDING;
 
 }
