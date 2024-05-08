@@ -7,10 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cnam.internal.system.monolithicsystemapplication.model.Claim;
+import com.cnam.internal.system.monolithicsystemapplication.model.ClaimDto;
 import com.cnam.internal.system.monolithicsystemapplication.model.ClaimStatus;
 import com.cnam.internal.system.monolithicsystemapplication.service.ClaimService;
 
@@ -36,6 +39,10 @@ public class ClaimController {
     public ResponseEntity<ClaimStatus> getClaimStatus(@PathVariable(value = "id") Long claimId) {
         return claimService.retrieveClaimStatusById(claimId);
     }
-    //add comment
 
+    @PostMapping("/claim")
+    public ResponseEntity<Claim> addClaim(@RequestBody ClaimDto claimDto) {
+        Claim savedClaim = claimService.addClaim(claimDto);
+        return ResponseEntity.ok().body(savedClaim);
+    }
 }
