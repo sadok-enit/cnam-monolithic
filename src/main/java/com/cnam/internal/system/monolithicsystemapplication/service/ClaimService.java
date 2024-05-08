@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.cnam.internal.system.monolithicsystemapplication.exception.ResourceNotFoundException;
 import com.cnam.internal.system.monolithicsystemapplication.model.Claim;
 import com.cnam.internal.system.monolithicsystemapplication.model.ClaimDto;
 import com.cnam.internal.system.monolithicsystemapplication.model.ClaimStatus;
@@ -50,8 +51,18 @@ public class ClaimService {
                         .status(claimDto.getStatus())
                         .build()
         );
+    }
 
+    public void deleteClaimById(Long claimId) {
+        claimRepository.deleteById(claimId);
+    }
 
+    public Claim updateClaimStatus(Long claimId, ClaimStatus newStatus) {
+        Claim claim = claimRepository.findById(claimId)
+                .orElseThrow(() -> new ResourceNotFoundException("Claim not found with id: " + claimId));
+
+        claim.setStatus(newStatus);
+        return claimRepository.save(claim);
     }
 
 }
