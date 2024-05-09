@@ -85,12 +85,26 @@ public class ClaimController {
     }
 
     /**
+     * Update a Claim by ID.
+     *
+     * @param claimId      The ID of the Claim to update.
+     * @param updatedClaim The updated Claim object.
+     * @return ResponseEntity with the updated Claim.
+     */
+    @PutMapping("/claim/{id}")
+    public ResponseEntity<Claim> updateClaim(@PathVariable(value = "id") Long claimId, @RequestBody ClaimDto updatedClaim) {
+        Claim claim = claimService.updateClaim(claimId, updatedClaim);
+        return ResponseEntity.ok().body(claim);
+    }
+
+    /**
      * Modifies the status of a claim by ID.
      *
      * @param claimId   The ID of the claim to modify
      * @param newStatus The new status for the claim
      * @return ResponseEntity with the modified claim
      */
+
     @PutMapping("/claim/{id}/status")
     public ResponseEntity<Claim> updateClaimStatus(@PathVariable(value = "id") Long claimId, @RequestParam ClaimStatus newStatus) {
         Claim updatedClaim = claimService.updateClaimStatus(claimId, newStatus);

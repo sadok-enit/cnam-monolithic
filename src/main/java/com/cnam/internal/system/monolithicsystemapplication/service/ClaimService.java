@@ -65,4 +65,21 @@ public class ClaimService {
         return claimRepository.save(claim);
     }
 
+    public Claim updateClaim(Long claimId, ClaimDto updatedClaim) {
+        Claim claim = claimRepository.findById(claimId)
+                .orElseThrow(() -> new ResourceNotFoundException("Claim not found with id: " + claimId));
+
+        claim.setNumeroReclamation(updatedClaim.getNumeroReclamation());
+        claim.setLibelle(updatedClaim.getLibelle());
+        claim.setMntEngage(updatedClaim.getMntEngage());
+        claim.setMntReclame(updatedClaim.getMntReclame());
+        claim.setMotif(updatedClaim.getMotif());
+        claim.setDate(updatedClaim.getDate());
+        claim.setObservation(updatedClaim.getObservation());
+        claim.setBulletinCode(updatedClaim.getBulletinCode());
+        claim.setNumBordereauReclamation(updatedClaim.getNumBordereauReclamation());
+        claim.setStatus(updatedClaim.getStatus());
+
+        return claimRepository.save(claim);
+    }
 }
