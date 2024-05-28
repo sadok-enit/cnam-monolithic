@@ -1,7 +1,10 @@
+
+
+
 package com.cnam.internal.system.monolithicsystemapplication.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,7 +47,7 @@ public class Claim {
     private String motif;
 
     @Column(name = "date")
-    private LocalDateTime date;
+    private Date date;
 
     @Column(name = "observation")
     private String observation;
@@ -60,3 +63,4 @@ public class Claim {
     private ClaimStatus status = ClaimStatus.PENDING;
 
 }
+
