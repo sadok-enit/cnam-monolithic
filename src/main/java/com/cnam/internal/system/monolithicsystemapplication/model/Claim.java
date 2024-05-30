@@ -1,6 +1,3 @@
-
-
-
 package com.cnam.internal.system.monolithicsystemapplication.model;
 
 import java.math.BigDecimal;
